@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>Hello</h1>
-<form th:action="@{/students/create}" method="post" th:object="${student}">
+<form th:action="@{/create}" method="post" th:object="${student}">
     <div>
         Name <input type="text" th:field="*{name}">
         <span class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name
@@ -16,7 +16,6 @@
         Email <input type="text" th:field="*{email}">
         <span class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Name
             Error</span>
-
     </div>
     <div>
         Mật khẩu <input type="password" th:field="*{password}">

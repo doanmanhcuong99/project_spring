@@ -14,6 +14,13 @@ public class AptechClass {
     private long deleteAt;
     private int status;
 
+
+  /*  public AptechClass() {
+    }
+    public AptechClass(String name) {
+        this.name = name;
+    }
+*/
     public int getId() {
         return id;
     }
@@ -61,7 +68,22 @@ public class AptechClass {
     public void setStatus(int status) {
         this.status = status;
     }
+/*
+    public Set<Student> getStudentSet() {
+        return studentSet;
+    }
 
+    public void setStudentSet(Set<Student> studentSet) {
+        this.studentSet = studentSet;
+    }*/
+
+
+   /* @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinTable(name = "aptech_class_student",
+            joinColumns = @JoinColumn(name = "aptech_class_id"),
+            inverseJoinColumns = @JoinColumn(name = "student_id"))
+            private Set<Student>studentSet;
+*/
 
 
 }

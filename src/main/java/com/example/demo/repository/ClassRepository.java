@@ -5,4 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 
 public interface ClassRepository extends JpaRepository<AptechClass, Integer> {
+    AptechClass findByName(String name);
 }

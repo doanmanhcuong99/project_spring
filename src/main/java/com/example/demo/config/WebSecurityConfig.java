@@ -1,5 +1,6 @@
 package com.example.demo.config;
 
+import com.example.demo.entity.Student;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -35,12 +36,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/students/**").permitAll()
+                .antMatchers("/login").permitAll()
+                .antMatchers("/").hasRole(String.format("%s", Student.Role.STUDENT.getValue()))
                 .and()
                 .formLogin()
-                .loginPage("/students/login").permitAll()
+                .loginPage("/login").permitAll()
+                .usernameParameter("email")
+                .passwordParameter("password")
+                .defaultSuccessUrl("/")
+                .failureUrl("/login?error")
                 .and()
-                .logout()
-                .permitAll();
+                .exceptionHandling()
+                .accessDeniedPage("/403");
     }
 }
